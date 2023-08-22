@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
-import {styled} from 'styled-components';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { styled } from "styled-components";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -19,7 +19,7 @@ const CoinsList = styled.ul``;
 
 const Coin = styled.li`
   background-color: white;
-  color: ${props => props.theme.bgColor};
+  color: ${(props) => props.theme.bgColor};
   border-radius: 15px;
   margin-bottom: 10px;
   a {
@@ -31,14 +31,14 @@ const Coin = styled.li`
   }
   &:hover {
     a {
-      color: ${props => props.theme.accentColor};
+      color: ${(props) => props.theme.accentColor};
     }
   }
 `;
 
 const Title = styled.h1`
   font-size: 48px;
-  color: ${props => props.theme.accentColor};
+  color: ${(props) => props.theme.accentColor};
 `;
 
 const Loader = styled.span`
@@ -67,8 +67,10 @@ function Coins() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     (async () => {
-      const response = await fetch("https://api.coinpaprika.com/v1/tickers?quotes=KRW");
-      const json =await response.json();
+      const response = await fetch(
+        "https://api.coinpaprika.com/v1/tickers?quotes=KRW"
+      );
+      const json = await response.json();
       setCoins(json.slice(0, 100));
       setLoading(false);
     })();
@@ -84,9 +86,7 @@ function Coins() {
         <CoinsList>
           {coins.map((coin) => (
             <Coin key={coin.id}>
-              <Link
-                to={`/%{coin.id}`}state={{name: coin.name}}
-              >
+              <Link to={`/%{coin.id}`} state={{ name: coin.name }}>
                 <Img
                   src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                 />

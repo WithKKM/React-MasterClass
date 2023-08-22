@@ -1,8 +1,8 @@
-import ReactDOM from 'react-dom';
-import {ThemeProvider} from 'styled-components';
-import {theme} from './theme';
-import App from './App';
-import React from 'react';
+import ReactDOM from "react-dom";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme";
+import App from "./App";
+import React from "react";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -10,5 +10,5 @@ ReactDOM.render(
       <App />
     </ThemeProvider>
   </React.StrictMode>,
-  document.getElementById('root'),
+  document.getElementById("root")
 );
