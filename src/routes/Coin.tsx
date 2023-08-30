@@ -145,10 +145,10 @@ function Coin() {
   useEffect(() => {
     (async () => {
       const infoData = await (
-        await fetch("https://api.coinpaprika.com/v1/coins/${coinId}")
+        await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
       ).json();
       const priceData = await (
-        await fetch("https://api.coinpaprika.com/v1/tickers/${coinId}")
+        await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
       ).json();
       setInfo(infoData);
       setPriceInfo(priceData);
@@ -205,12 +205,8 @@ function Coin() {
           </Tabs>
 
           <Routes>
-            <Route path={`/:coinId/price`}>
-              <Price />
-            </Route>
-            <Route path={`/:coinId/chart`}>
-              <Chart />
-            </Route>
+            <Route path="chart" element={<Chart />} />
+            <Route path="price" element={<Price />} />
           </Routes>
         </>
       )}
