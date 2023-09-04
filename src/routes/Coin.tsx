@@ -161,6 +161,7 @@ function Coin() {
     ["tickers", coinId],
     () => fetchCoinTickers(coinId)
   );
+
   /* const [loading, setLoading] = useState(true);
   const [info, setInfo] = useState<InfoData>();
   const [priceInfo, setPriceInfo] = useState<PriceData>();
@@ -214,17 +215,17 @@ function Coin() {
               <span>{tickersData?.max_supply}</span>
             </OverviewItem>
           </Overview>
-
           <Tabs>
             <Tab isActive={chartMatch !== null}>
-              <Link to={`/:coinId/chart`}>Chart</Link>
+              <Link to="chart" state={{ coinId }}>
+                Chart
+              </Link>
             </Tab>
             <Tab isActive={priceMatch !== null}>
-              <Link to={`/:coinId/price`}>Price</Link>
+              <Link to={`/${coinId}/price`}>Price</Link>
             </Tab>
           </Tabs>
           <Outlet />
-
           <Routes>
             <Route path="chart" element={<Chart />} />
             <Route path="price" element={<Price />} />
